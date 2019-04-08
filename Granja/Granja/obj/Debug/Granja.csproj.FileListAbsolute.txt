@@ -1,0 +1,7 @@
+C:\newWorkspace\Granja\Granja\Granja\obj\Debug\Granja.csprojAssemblyReference.cache
+C:\newWorkspace\Granja\Granja\Granja\obj\Debug\Granja.csproj.CoreCompileInputs.cache
+C:\newWorkspace\Granja\Granja\Granja\bin\Debug\Granja.exe.config
+C:\newWorkspace\Granja\Granja\Granja\bin\Debug\Granja.exe
+C:\newWorkspace\Granja\Granja\Granja\bin\Debug\Granja.pdb
+C:\newWorkspace\Granja\Granja\Granja\obj\Debug\Granja.exe
+C:\newWorkspace\Granja\Granja\Granja\obj\Debug\Granja.pdb
