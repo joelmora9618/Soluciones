@@ -71,7 +71,6 @@ namespace Granja.Archivos
         {
             List<clsAbsAnimal> listaAnimales = new List<clsAbsAnimal>();
             Console.Clear();
-            StreamReader Leer = new StreamReader(path, true);
             Console.WriteLine("Mostrando todos los registros:\n\n");
 
 
@@ -80,21 +79,29 @@ namespace Granja.Archivos
             {
                 for (int i = 0; i < lineas.Length; i++)
                 {
-                    clsAbsAnimal animal = new Desconocido();
-                    if (lineas[i].Substring(0, lineas[i].IndexOf(" : ")).Equals("nombre"))
+                    if (!string.IsNullOrEmpty(lineas[i]))
                     {
-                        animal.Nombre = lineas[i].Substring(lineas[i].IndexOf(" : ") + 1, lineas[i].Length);
+                        clsAbsAnimal animal = new Desconocido();
+                        if (lineas[i].Substring(0, lineas[i].IndexOf(":")).Equals("nombre"))
+                        {
+                            animal.Nombre = lineas[i].Substring(lineas[i].IndexOf(":") + 1, lineas[i].Length - lineas[i].IndexOf(":") - 1);
+                        }
+                        if (lineas[i].Substring(0, lineas[i].IndexOf(":")).Equals("hambre"))
+                        {
+                            animal.Hambre = Convert.ToInt32(lineas[i].Substring(lineas[i].IndexOf(":") + 1, lineas[i].Length - lineas[i].IndexOf(":") - 1));
+                        }
+                        if (lineas[i].Substring(0, lineas[i].IndexOf(":")).Equals("energia"))
+                        {
+                            animal.Energia = Convert.ToInt32(lineas[i].Substring(lineas[i].IndexOf(":") + 1, lineas[i].Length - lineas[i].IndexOf(":") - 1));
+                        }
+                        Console.WriteLine(lineas[i]);
+                        listaAnimales.Add(animal);
                     }
-                    if (lineas[i].Substring(0, lineas[i].IndexOf(" : ")).Equals("hambre"))
+                    else
                     {
-                        animal.Hambre = Convert.ToInt32(lineas[i].Substring(lineas[i].IndexOf(" : ") + 1, lineas[i].Length));
+                        Console.WriteLine("\n");
                     }
-                    if (lineas[i].Substring(0, lineas[i].IndexOf(" : ")).Equals("energia"))
-                    {
-                        animal.Energia = Convert.ToInt32(lineas[i].Substring(lineas[i].IndexOf(" : ") + 1, lineas[i].Length));
-                    }
-                    Console.WriteLine(lineas[i]);
-                    listaAnimales.Add(animal);
+
                 }
 
                 Console.WriteLine("\nEl registro se mostro exitosamente.\n\n");
