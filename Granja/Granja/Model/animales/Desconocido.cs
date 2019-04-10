@@ -15,7 +15,6 @@ namespace Granja.Model.animales
             this.Hambre = animal.Hambre;
             this.Energia = animal.Energia;
             this.nombre = animal.Nombre;
-            this.tipo = animal.Tipo;
         }
 
         public Desconocido()

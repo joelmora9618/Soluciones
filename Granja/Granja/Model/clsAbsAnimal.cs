@@ -11,12 +11,13 @@ namespace Granja.Model
     public abstract class clsAbsAnimal
     {
         protected static int RECUPERACION_MAXIMA = 100;
+        protected static int RECUPERACION_MINIMA = 0;
         protected int hambre = 0;
         protected int energia = 100;
-        protected TipoAnimal tipo;
+        protected TipoAnimal tipoAnimal = new TipoAnimal();
 
         public abstract String Nombre { get; set; }
-        public TipoAnimal Tipo { get; set; }
+        public TipoAnimal Tipo { get => tipoAnimal; set => tipoAnimal = value; }
         public int Hambre { get => hambre; set => hambre = value; }
         public int Energia { get => energia; set => energia = value; }
 
@@ -33,22 +34,22 @@ namespace Granja.Model
 
         protected void AumentarHambre(int hambre)
         {
-            Unarios.aumentar(hambre, RECUPERACION_MAXIMA);
+            Unarios.aumentar(Hambre,hambre, RECUPERACION_MAXIMA);
         }
 
         protected void DisminuirHambre(int hambre)
         {
-            Unarios.disminuir(hambre, RECUPERACION_MAXIMA);
+            Unarios.disminuir(Hambre,hambre, RECUPERACION_MINIMA);
         }
 
         protected void AumentarEnergia(int energia)
         {
-            Unarios.aumentar(energia, RECUPERACION_MAXIMA);
+            Unarios.aumentar(Energia,energia, RECUPERACION_MAXIMA);
         }
 
         protected void DisminuirEnergia(int energia)
         {
-            Unarios.disminuir(energia, RECUPERACION_MAXIMA);
+            Unarios.disminuir(Energia,energia, RECUPERACION_MINIMA);
         }
 
         public int getEspecie(string especie)

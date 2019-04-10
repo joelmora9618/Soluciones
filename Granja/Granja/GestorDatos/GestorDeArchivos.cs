@@ -116,86 +116,81 @@ namespace Granja.Archivos
 
         public clsAbsAnimal GetAnimal(string path)
         {
-            clsAbsAnimal animal = null;
+            clsAbsAnimal animal = new Desconocido();
             string Linea;
             int contador = 0;
             string result_s;
             Console.Clear();
-            StreamReader Leer = new StreamReader(path, true);
-            Console.WriteLine("Buscar registro por medio de clave DUI:\n\n");
-            Console.Write("Ingresa la clave DUI: ");
+            Console.WriteLine("Buscar registro por medio del nombre:\n\n");
+            Console.Write("Ingresa el nombre del animal: ");
             result_s = Console.ReadLine();
-            do
-            {
-                Linea = Leer.ReadLine();
-            } while (Linea != "nombre:"+result_s && Linea != null);
 
-            if ((Linea == "nombre:" + result_s))
+            string[] lineas = File.ReadAllLines(path);
+            string nombre = "";
+            for (int i = 0; i < lineas.Length; i++)
             {
-                animal = new Desconocido();
-                string[] nombreValue = result_s.Split(':');
-                animal.Nombre = nombreValue[1];
-                
-                do
+                if (!string.IsNullOrEmpty(lineas[i]))
                 {
-                    string[] animalValue = Linea.Split(':');
-                    if (animalValue[0].Equals("especie:"))
-                    {                      
-                        animal.Tipo.NombreTipo = animalValue[1];
-                    }
-                    else if(animalValue[0].Equals("codigo de especie:"))
+                    
+                    if (lineas[i].Substring(0, lineas[i].IndexOf(":")).Equals("nombre"))
                     {
-                        animal.Tipo.CodigoTipoAnimal = Convert.ToInt32(animalValue[1]);
+                        nombre = lineas[i].Substring(lineas[i].IndexOf(":") + 1, lineas[i].Length - lineas[i].IndexOf(":") - 1);
                     }
-                    else if (animalValue[0].Equals("hambre:"))
+                    if (nombre.Equals(result_s))
                     {
-                        animal.Hambre = Convert.ToInt32(animalValue[1]);
+                        animal.Nombre = nombre;
                     }
-                    else if (animalValue[0].Equals("energia:"))
+                    if (nombre.Equals(result_s) && lineas[i].Substring(0, lineas[i].IndexOf(":")).Equals("especie"))
                     {
-                        animal.Energia = Convert.ToInt32(animalValue[1]);
+                        animal.Tipo.NombreTipo = lineas[i].Substring(lineas[i].IndexOf(":") + 1, lineas[i].Length - lineas[i].IndexOf(":") - 1);
                     }
-
-                    Console.WriteLine(Linea);
-                    Linea = Leer.ReadLine();
-
-                } while (Linea != " ");
-                Console.WriteLine("\nEl registro se mostro exitosamente.\n\n5) Regresar al menu principal\n");
-                animal = animal.getEspecie(animal, animal.Tipo.CodigoTipoAnimal);
+                    if (nombre.Equals(result_s) && lineas[i].Substring(0, lineas[i].IndexOf(":")).Equals("codigo de especie"))
+                    {
+                        animal.Tipo.CodigoTipoAnimal = Convert.ToInt32(lineas[i].Substring(lineas[i].IndexOf(":") + 1, lineas[i].Length - lineas[i].IndexOf(":") - 1));
+                    }
+                    if (nombre.Equals(result_s) && lineas[i].Substring(0, lineas[i].IndexOf(":")).Equals("hambre"))
+                    {
+                        lineas[i] = "hambre:" + animal.Hambre;
+                    }
+                    if (nombre.Equals(result_s) && lineas[i].Substring(0, lineas[i].IndexOf(":")).Equals("energia"))
+                    {
+                        lineas[i] = "energia:" + animal.Energia;
+                    }
+                }
             }
-            Leer.Close();
+            Console.Write("nombre: "+animal.Nombre+"\n");
+            Console.Write("especie: " + animal.Tipo.NombreTipo + "\n");
+            Console.Write("hambre: " + animal.Hambre + "\n");
+            Console.Write("energia: " + animal.Energia + "\n");
 
-            
-            Console.Write("\nTu opcion: ");
-            return animal;
+            return animal.getEspecie(animal, animal.Tipo.CodigoTipoAnimal);
         }
 
         public void ModificarAnimal(clsAbsAnimal animal,string path)
         {           
-            string Linea;
-            int contador = 0;
-            string result_s;
-
             string[] lineas = File.ReadAllLines(path);
             for (int i = 0; i < lineas.Length; i++)
             {
-                string nombre = "";
-                if (lineas[i].Substring(0, lineas[i].IndexOf(" : ")).Equals("nombre"))
+                if (!string.IsNullOrEmpty(lineas[i]))
                 {
-                    nombre = lineas[i].Substring(lineas[i].IndexOf(" : ")+1, lineas[i].Length);
-                }
-                if(nombre.Equals(animal.Nombre)&& lineas[i].Substring(0, lineas[i].IndexOf(" : ")).Equals("hambre"))
-                {
-                    lineas[i] = "hambre:" + animal.Hambre;
-                }
-                if (nombre.Equals(animal.Nombre) && lineas[i].Substring(0, lineas[i].IndexOf(" : ")).Equals("energia"))
-                {
-                    lineas[i] = "energia:" + animal.Energia;
+                    string nombre = "";
+                    if (lineas[i].Substring(0, lineas[i].IndexOf(":")).Equals("nombre"))
+                    {
+                        nombre = lineas[i].Substring(lineas[i].IndexOf(":") + 1, lineas[i].Length - lineas[i].IndexOf(":") - 1);
+                    }
+                    if (nombre.Equals(animal.Nombre) && lineas[i].Substring(0, lineas[i].IndexOf(":")).Equals("hambre"))
+                    {
+                        lineas[i] = "hambre:" + animal.Hambre;
+                    }
+                    if (nombre.Equals(animal.Nombre) && lineas[i].Substring(0, lineas[i].IndexOf(":")).Equals("energia"))
+                    {
+                        lineas[i] = "energia:" + animal.Energia;
+                    }
                 }
             }
             File.WriteAllLines(path, lineas);
 
-            Console.WriteLine("\nEl registro se mostro exitosamente.\n\n5) Regresar al menu principal\n");
+            Console.WriteLine("\nEl animal se alimento exitosamente.");
                 animal = animal.getEspecie(animal, animal.Tipo.CodigoTipoAnimal);           
        
         }

@@ -8,6 +8,11 @@ namespace Granja.Model
 {
     public class TipoAnimal
     {
+        public TipoAnimal()
+        {
+
+        }
+
         public TipoAnimal(int codigoTipoAnimal, string nombreTipo)
         {
             this.CodigoTipoAnimal = codigoTipoAnimal;

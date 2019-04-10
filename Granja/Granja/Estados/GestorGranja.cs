@@ -33,9 +33,10 @@ namespace Granja.Estados
         }
         public void alimentarAnimal()
         {
-            if (animalesBussines.getAnimal() != null)
+            clsAbsAnimal animal = animalesBussines.getAnimal();
+            if (animal != null)
             {
-                animalesBussines.modificarAnimal(animalesBussines.getAnimal().alimentar());
+                animalesBussines.modificarAnimal(animal.alimentar());
             }
         }
         public void alimentarAnimales()
@@ -47,9 +48,10 @@ namespace Granja.Estados
         }
         public void jugarConAnimal()
         {
-            if (animalesBussines.getAnimal() != null)
+            clsAbsAnimal animal = animalesBussines.getAnimal();
+            if (animal != null)
             {
-                animalesBussines.modificarAnimal(animalesBussines.getAnimal().jugar());
+                animalesBussines.modificarAnimal(animal.jugar());
             }
         }
         public void jugarConAnimales()

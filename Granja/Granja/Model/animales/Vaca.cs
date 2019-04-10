@@ -15,7 +15,6 @@ namespace Granja.Model
             this.Hambre = animal.Hambre;
             this.Energia = animal.Energia;
             this.nombre = animal.Nombre;
-            this.tipo = animal.Tipo;
         }
 
         public Vaca()
@@ -34,6 +33,7 @@ namespace Granja.Model
         {
             if (puedeJugar())
             {
+                energia = energia - 15;
                 DisminuirEnergia(15);
                 AumentarHambre(20);
             }

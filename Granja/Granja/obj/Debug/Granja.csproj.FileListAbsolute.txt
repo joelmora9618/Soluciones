@@ -5,3 +5,10 @@ C:\newWorkspace\Granja\Granja\Granja\bin\Debug\Granja.exe
 C:\newWorkspace\Granja\Granja\Granja\bin\Debug\Granja.pdb
 C:\newWorkspace\Granja\Granja\Granja\obj\Debug\Granja.exe
 C:\newWorkspace\Granja\Granja\Granja\obj\Debug\Granja.pdb
+C:\newWorkspace\Soluciones\Granja\Granja\bin\Debug\Granja.exe.config
+C:\newWorkspace\Soluciones\Granja\Granja\bin\Debug\Granja.exe
+C:\newWorkspace\Soluciones\Granja\Granja\bin\Debug\Granja.pdb
+C:\newWorkspace\Soluciones\Granja\Granja\obj\Debug\Granja.csprojAssemblyReference.cache
+C:\newWorkspace\Soluciones\Granja\Granja\obj\Debug\Granja.csproj.CoreCompileInputs.cache
+C:\newWorkspace\Soluciones\Granja\Granja\obj\Debug\Granja.exe
+C:\newWorkspace\Soluciones\Granja\Granja\obj\Debug\Granja.pdb
