@@ -28,28 +28,28 @@ namespace Granja.Model
         public clsAbsAnimal descansar()
         {
             energia = RECUPERACION_MAXIMA;
-            AumentarHambre(35);
+            hambre = AumentarHambre(Hambre,35);
             return this;
         }
 
-        protected void AumentarHambre(int hambre)
+        protected int AumentarHambre(int hambreActual,int hambreAAumentar)
         {
-            Unarios.aumentar(Hambre,hambre, RECUPERACION_MAXIMA);
+            return Unarios.aumentar(Hambre, hambreAAumentar, RECUPERACION_MAXIMA);
         }
 
-        protected void DisminuirHambre(int hambre)
+        protected int DisminuirHambre(int hambreActual, int hambreAAumentar)
         {
-            Unarios.disminuir(Hambre,hambre, RECUPERACION_MINIMA);
+            return Unarios.disminuir(hambreActual, hambreAAumentar, RECUPERACION_MINIMA);
         }
 
-        protected void AumentarEnergia(int energia)
+        protected int AumentarEnergia(int energiaActual,int energiaAAumentar)
         {
-            Unarios.aumentar(Energia,energia, RECUPERACION_MAXIMA);
+            return Unarios.aumentar(energiaActual, energiaAAumentar, RECUPERACION_MAXIMA);
         }
 
-        protected void DisminuirEnergia(int energia)
+        protected int DisminuirEnergia(int eneregiaActual,int energiaADisminuir)
         {
-            Unarios.disminuir(Energia,energia, RECUPERACION_MINIMA);
+           return Unarios.disminuir(eneregiaActual, energiaADisminuir, RECUPERACION_MINIMA);
         }
 
         public int getEspecie(string especie)

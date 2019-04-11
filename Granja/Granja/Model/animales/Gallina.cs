@@ -24,7 +24,7 @@ namespace Granja.Model
         public override string Nombre { get => nombre; set => nombre = value; }
 
         public override clsAbsAnimal alimentar() {
-            DisminuirHambre(30);
+            Hambre = DisminuirHambre(Hambre, 30);
             return this;
         }
 
@@ -33,8 +33,8 @@ namespace Granja.Model
             if (puedeJugar())
             {
                 Random random = new Random();
-                DisminuirEnergia(random.Next(20, 50));
-                AumentarHambre(20);
+                Energia = DisminuirEnergia(Energia,random.Next(20, 50));
+                Hambre = AumentarHambre(Hambre,20);
             }
             else
             {

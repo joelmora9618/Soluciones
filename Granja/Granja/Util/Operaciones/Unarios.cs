@@ -8,7 +8,7 @@ namespace Granja.Operaciones
 {
     public class Unarios
     {
-        public static void aumentar(int value, int cantidad, int limite)
+        public static int aumentar(int value, int cantidad, int limite)
         {
             for (int i = 0; i < cantidad; i++)
             {
@@ -18,23 +18,25 @@ namespace Granja.Operaciones
                 }
                 else
                 {
-                    break;
+                    return value;
                 }
             }
+            return value;
         }
-        public static void disminuir(int value, int cantidad, int limite)
+        public static int disminuir(int value, int cantidad, int limite)
         {
             for (int i = 0; i < cantidad; i++)
              {
-                if (value >= limite)
+                if (value > limite)
                 {
                     value--;
                 }
                 else
                 {
-                    break;
+                    return value;
                 }
             }
+            return value;
         }
     }
 }

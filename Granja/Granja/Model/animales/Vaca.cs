@@ -25,7 +25,7 @@ namespace Granja.Model
 
         public override clsAbsAnimal alimentar()
         {
-            DisminuirHambre(23);
+            Hambre = DisminuirHambre(Hambre, 23);
             return this;
         }
 
@@ -33,9 +33,8 @@ namespace Granja.Model
         {
             if (puedeJugar())
             {
-                energia = energia - 15;
-                DisminuirEnergia(15);
-                AumentarHambre(20);
+                Energia = DisminuirEnergia(Energia,15);
+                Hambre = AumentarHambre(Hambre,20);
             }
             else
             {
