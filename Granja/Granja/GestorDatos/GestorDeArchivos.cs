@@ -94,21 +94,11 @@ namespace Granja.Archivos
                         {
                             animal.Energia = Convert.ToInt32(lineas[i].Substring(lineas[i].IndexOf(":") + 1, lineas[i].Length - lineas[i].IndexOf(":") - 1));
                         }
-                        Console.WriteLine(lineas[i]);
                         listaAnimales.Add(animal);
                     }
-                    else
-                    {
-                        Console.WriteLine("\n");
-                    }
-
+                
                 }
 
-                Console.WriteLine("\nEl registro se mostro exitosamente.\n\n");
-            }
-            else
-            {
-                Console.WriteLine("\nNo Hay Datos cargados.\n\n");
             }
 
             return listaAnimales;
@@ -158,11 +148,6 @@ namespace Granja.Archivos
                     }
                 }
             }
-            Console.Write("nombre: "+animal.Nombre+"\n");
-            Console.Write("especie: " + animal.Tipo.NombreTipo + "\n");
-            Console.Write("hambre: " + animal.Hambre + "\n");
-            Console.Write("energia: " + animal.Energia + "\n");
-
             return animal.getEspecie(animal, animal.Tipo.CodigoTipoAnimal);
         }
 

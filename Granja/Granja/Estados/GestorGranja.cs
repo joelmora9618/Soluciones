@@ -1,5 +1,6 @@
 ﻿using Granja.Bussines;
 using Granja.Model;
+using Granja.Model.animales;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,11 +69,24 @@ namespace Granja.Estados
         }
         public clsAbsAnimal buscarAnimal()
         {
-            return animalesBussines.getAnimal();
+            clsAbsAnimal animal = animalesBussines.getAnimal();
+            Console.Write("nombre: " + animal.Nombre + "\n");
+            Console.Write("especie: " + animal.Tipo.NombreTipo + "\n");
+            Console.Write("hambre: " + animal.Hambre + "\n");
+            Console.Write("energia: " + animal.Energia + "\n");
+            return animal;
         }
         public List<clsAbsAnimal> buscarAnimales()
         {
-            return animalesBussines.getAnimales();
+            List <clsAbsAnimal> listAnimal = animalesBussines.getAnimales();
+            foreach(clsAbsAnimal animal in listAnimal)
+            {
+                Console.Write("nombre: " + animal.Nombre + "\n");
+                Console.Write("especie: " + animal.Tipo.NombreTipo + "\n");
+                Console.Write("hambre: " + animal.Hambre + "\n");
+                Console.Write("energia: " + animal.Energia + "\n\n");
+            }
+            return listAnimal;
         }
     }
 }
