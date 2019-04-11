@@ -18,10 +18,11 @@ namespace Granja.Estados
         }
 
         public void descansarAnimal()
-        {         
-            if(animalesBussines.getAnimal() != null)
+        {
+            clsAbsAnimal animal = animalesBussines.getAnimal();
+            if (animal != null)
             {
-                animalesBussines.modificarAnimal(animalesBussines.getAnimal().descansar());                
+                animalesBussines.modificarAnimal(animal.descansar());                
             }
         }
         public void descansarAnimales()

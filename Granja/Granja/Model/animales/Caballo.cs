@@ -28,7 +28,7 @@ namespace Granja.Model
             Random random = new Random();
             if (random.Next(0, 100) > 50)
             {
-                AumentarHambre(40);
+                Hambre = DisminuirHambre(Hambre,40);
             }
             return this;
         }
@@ -37,8 +37,8 @@ namespace Granja.Model
         {
             if (puedeJugar())
             {
-                DisminuirEnergia(12);
-                AumentarHambre(33);
+                DisminuirEnergia(Energia,12);
+                Hambre = AumentarHambre(Hambre,33);
             }
             else
             {

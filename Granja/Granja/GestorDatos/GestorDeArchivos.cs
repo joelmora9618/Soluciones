@@ -150,11 +150,11 @@ namespace Granja.Archivos
                     }
                     if (nombre.Equals(result_s) && lineas[i].Substring(0, lineas[i].IndexOf(":")).Equals("hambre"))
                     {
-                        lineas[i] = "hambre:" + animal.Hambre;
+                        animal.Hambre = Convert.ToInt32(lineas[i].Substring(lineas[i].IndexOf(":") + 1, lineas[i].Length - lineas[i].IndexOf(":") - 1));
                     }
                     if (nombre.Equals(result_s) && lineas[i].Substring(0, lineas[i].IndexOf(":")).Equals("energia"))
                     {
-                        lineas[i] = "energia:" + animal.Energia;
+                        animal.Energia = Convert.ToInt32(lineas[i].Substring(lineas[i].IndexOf(":") + 1, lineas[i].Length - lineas[i].IndexOf(":") - 1));
                     }
                 }
             }
@@ -169,11 +169,11 @@ namespace Granja.Archivos
         public void ModificarAnimal(clsAbsAnimal animal,string path)
         {           
             string[] lineas = File.ReadAllLines(path);
+            string nombre = "";
             for (int i = 0; i < lineas.Length; i++)
             {
                 if (!string.IsNullOrEmpty(lineas[i]))
                 {
-                    string nombre = "";
                     if (lineas[i].Substring(0, lineas[i].IndexOf(":")).Equals("nombre"))
                     {
                         nombre = lineas[i].Substring(lineas[i].IndexOf(":") + 1, lineas[i].Length - lineas[i].IndexOf(":") - 1);
